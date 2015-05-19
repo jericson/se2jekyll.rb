@@ -40,9 +40,9 @@ folder for revision before publishing.
 
   Every
   [question and answer](http://meta.stackexchange.com/a/36716/1438)
-  has a unique (to the site) ID. The second parameter[^1] is that
-  number, which may be found in the URL or by examining the share link
-  at the bottom of a post.
+  has a unique (to the site) ID. The second parameter<sup>*</sup> is
+  that number, which may be found in the URL or by examining the share
+  link at the bottom of a post.
 
 ## Output
 
@@ -77,7 +77,7 @@ edits.
 
 ---
 
-[^1]: Technically, you can pass multiple `post_id`s. Currently, only
+\* Technically, you can pass multiple `post_id`s. Currently, only
       one is really supported since the output is sent to `STDOUT`
       rather than individual files. It's not terrible hard to break
       the posts out based on front matter, however, so I left this as
