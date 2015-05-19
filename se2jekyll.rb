@@ -5,7 +5,7 @@ require 'json'
 require 'htmlentities'
 require 'Date'
 
-abort('Usage: ' + $0 + ' site post_id [...]') unless ARGV.length >= 2
+abort('Usage: ' + $0 + ' site post_id') unless ARGV.length >= 2
 
 site = ARGV.shift
 ARGV.each do | id |
