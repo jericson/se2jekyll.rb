@@ -5,7 +5,7 @@ require 'json'
 require 'htmlentities'
 require 'Date'
 
-abort('Usage: ' + $0 + ' site id[...]') unless ARGV.length >= 2
+abort('Usage: ' + $0 + ' site post_id [...]') unless ARGV.length >= 2
 
 site = ARGV.shift
 ARGV.each do | id |
@@ -34,7 +34,7 @@ date: #{ created.strftime('%F %T') }
 comments: no
 ---
 
-(Originally published on [#{ site} Stack Exchange](#{ post['share_link'] }/#{ owner['user_id'] }) by #{ author }.)
+([Originally published](#{ post['share_link'] }/#{ owner['user_id'] }) on #{ site } Stack Exchange by #{ author }.)
 
 #{ body  }
 
