@@ -1,2 +1,12 @@
 # se2jekyll.rb
-Use Stack Exchange's API to fetch posts for posting on a Jekyll-powered blog.
+
+Fetch Stack Exchange posts for publishing on a Jekyll-powered blog.
+
+## Synopsis
+
+> **se2jekyll.rb** _site_ _post_id_ [_..._]
+
+
+
+<!--  LocalWords:  jekyll rb LocalWords
+ -->
