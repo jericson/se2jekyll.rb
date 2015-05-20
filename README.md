@@ -98,6 +98,9 @@ Feel free to fork my code if these choices don't make sense for your purposes.
 
 * Error checking.
 
+* Make use of [OAuth identification](https://api.stackexchange.com/docs/authentication) somehow.
+  <!-- http://stackapps.com/apps/oauth/view/4850 -->
+
 ---
 
 \* Technically, you can pass multiple `post_id`s. Currently, only
