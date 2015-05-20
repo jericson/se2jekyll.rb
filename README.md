@@ -12,9 +12,9 @@ Example (http://meta.puzzling.stackexchange.com/a/3020):
    
 ## Description
 
-All posts to Stack Exchange are licensed under
-[Creative Commons](http://creativecommons.org/licenses/by-sa/3.0/),
-which means they can be republished with
+All posts to Stack Exchange acquire a
+[Creative Commons license](http://creativecommons.org/licenses/by-sa/3.0/)
+that allows republication with
 [attribution](http://blog.stackoverflow.com/2009/06/attribution-required/). This
 script uses the
 [Stack Exchange API](http://api.stackexchange.com/docs) to get a copy
@@ -42,7 +42,10 @@ folder for revision before publishing.
   [question and answer](http://meta.stackexchange.com/a/36716/1438)
   has a unique (to the site) ID. The second parameter<sup>*</sup> is
   that number, which may be found in the URL or by examining the share
-  link at the bottom of a post.
+  link at the bottom of a post. You can find your post_ids by
+  [your display name](http://data.stackexchange.com/stackoverflow/query/316319/all-my-posts?Name=)
+  or
+  [via the API](https://api.stackexchange.com/docs/me-posts#pagesize=100&order=desc&sort=creation&filter=!-.5dQYOim_ef&site=stackoverflow&run=true).
 
 ## Output
 
@@ -62,6 +65,26 @@ and
 as two blocks. Many other quirks won't matter too much, but that one
 is pretty visible to me. The moral of the story is to leave room for
 edits.
+
+I've tried to fill in sensible values to the front matter. A few quirks to note:
+
+* I use the question title as the post title, which is often a
+  reasonable choice. Not everyone has the titling skill, however.
+
+* Currently, I only include the `meta-post` tag, which works for my
+  blog's tagging system but might not for yours.
+
+* The date is set to the creation date of the post on Stack Exchange, not the current date.
+
+* I include two custom variables:
+
+  * `license: http://creativecommons.org/licenses/by-sa/3.0/`
+  * `comments: no`
+
+  These should not cause problems unless your blog layout has
+  conflicting definitions of these variables.
+
+Feel free to fork my code if these choices don't make sense for your purposes.
 
 ## Todo
 
@@ -87,4 +110,6 @@ edits.
 <!--  LocalWords:  jekyll rb LocalWords sa se md frontmatter Todo io
  -->
 <!--  LocalWords:  STDOUT aspx renderer strangenesses GitHub
+ -->
+<!--  LocalWords:  creativecommons
  -->
