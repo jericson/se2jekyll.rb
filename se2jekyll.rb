@@ -20,9 +20,8 @@ ARGV.each do | id |
   items.each do | post |
     owner = post['owner']
     author = '<a alt="' + owner['display_name']+ '" href="' + owner['link'] + '">' + owner['display_name'] + '</a>'
-
+    post_link = post['share_link'] + '/' + owner['user_id'].to_s
     body = HTMLEntities.new.decode post['body_markdown']
-
     created = DateTime.strptime(post['creation_date'].to_s, '%s')
   
     puts <<MD
@@ -37,9 +36,15 @@ date: #{ created.strftime('%F %T') }
 comments: no
 ---
 
-([Originally published](#{ post['share_link'] }/#{ owner['user_id'] }) on #{ site } Stack Exchange by #{ author }.)
+([Originally published](#{ post_link }) on #{ site } Stack Exchange by #{ author }.)
+
+---
 
 #{ body  }
+
+---
+
+Please direct comments to the [original post](#{ post_link }).
 
 MD
   end

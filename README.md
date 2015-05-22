@@ -88,7 +88,13 @@ Feel free to fork my code if these choices don't make sense for your purposes.
 
 ## Bugs
 
+[![Build Status](https://travis-ci.org/jericson/se2jekyll.rb.svg?branch=master)](https://travis-ci.org/jericson/se2jekyll.rb)
+
 * Something along the chain is screwing up Unicode. See: `se2jekyll.rb stackoverflow 1732454`
+
+## License
+
+[Artistic License 2.0](https://github.com/jericson/se2jekyll.rb/blob/master/LICENSE)
 
 ## Todo
 
@@ -104,8 +110,12 @@ Feel free to fork my code if these choices don't make sense for your purposes.
 
 * Tests.
 
-* Make use of [OAuth identification](https://api.stackexchange.com/docs/authentication) somehow.
+* Maybe make use of [OAuth identification](https://api.stackexchange.com/docs/authentication) somehow.
   <!-- http://stackapps.com/apps/oauth/view/4850 -->
+
+* There's a
+  [Ruby library for the Stack Exchange API](https://github.com/raysrashmi/ruby-stackoverflow). Should
+  I use it?
 
 ---
 
