@@ -86,6 +86,10 @@ I've tried to fill in sensible values to the front matter. A few quirks to note:
 
 Feel free to fork my code if these choices don't make sense for your purposes.
 
+## Bugs
+
+* Something along the chain is screwing up Unicode. See: `se2jekyll.rb stackoverflow 1732454`
+
 ## Todo
 
 * There are several things we could look up with an extra API call or two. In particular:
@@ -97,6 +101,8 @@ Feel free to fork my code if these choices don't make sense for your purposes.
 * Obtain multiple posts based on some criteria such as author.
 
 * Error checking.
+
+* Tests.
 
 * Make use of [OAuth identification](https://api.stackexchange.com/docs/authentication) somehow.
   <!-- http://stackapps.com/apps/oauth/view/4850 -->
@@ -114,5 +120,5 @@ Feel free to fork my code if these choices don't make sense for your purposes.
  -->
 <!--  LocalWords:  STDOUT aspx renderer strangenesses GitHub
  -->
-<!--  LocalWords:  creativecommons
+<!--  LocalWords:  creativecommons stackoverflow
  -->

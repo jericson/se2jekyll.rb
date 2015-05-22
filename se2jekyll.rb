@@ -1,4 +1,5 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby -w
+# encoding: UTF-8
 
 require 'net/http'
 require 'json'
@@ -13,7 +14,8 @@ ARGV.each do | id |
   uri = URI('http://api.stackexchange.com/2.2/posts/' + id)
   uri.query = URI.encode_www_form({ :site => site, :filter => '!*7PYFiVwh*N4PkCdfxnM3de0s50u' })
 
-  items = JSON.parse(Net::HTTP.get_response(uri).body)['items']
+  response = Net::HTTP.get_response(uri)
+  items = JSON.parse(response.body)['items']
 
   items.each do | post |
     owner = post['owner']
@@ -29,6 +31,7 @@ layout: post
 title: #{ post['title'] }
 tags: meta-post 
 license: http://creativecommons.org/licenses/by-sa/3.0/
+encoding: utf-8
 author: #{ author }
 date: #{ created.strftime('%F %T') }
 comments: no
