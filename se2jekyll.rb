@@ -4,7 +4,7 @@
 require 'net/http'
 require 'json'
 require 'htmlentities'
-require 'Date'
+require 'date'
 
 abort('Usage: ' + $0 + ' site post_id') unless ARGV.length >= 2
 
