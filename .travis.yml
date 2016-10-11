@@ -1,6 +1,7 @@
 language: ruby
+cache: bundler
 rvm:
-  - 2.2.3p173
+  - 2.2
   - 2.0.0-p481
   - ruby-head
   - 1.9.3
