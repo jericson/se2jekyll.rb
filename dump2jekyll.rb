@@ -1,26 +1,23 @@
 #!/usr/bin/env ruby -w
 # encoding: UTF-8
 
-require 'HTTParty'
-require 'json'
+require 'open-uri'
+require 'nokogiri'
 require 'htmlentities'
 require 'date'
 
 def get_post (uri, site)
+  response = Net::HTTP.get_response(uri)
+  items = JSON.parse(response.body)['items']
 
-  response = HTTParty.get(uri)
-  case response.code
-    when 200
-      items = JSON.parse(response.body)['items']
+  items.each do | post |
+    owner = post['owner']
+    author = '<a alt="' + owner['display_name']+ '" href="' + owner['link'] + '">' + owner['display_name'] + '</a>'
+    post_link = post['share_link'] + '/' + owner['user_id'].to_s
+    body = HTMLEntities.new.decode post['body_markdown']
+    created = DateTime.strptime(post['creation_date'].to_s, '%s').strftime('%F %T')
   
-      items.each do | post |
-        owner = post['owner']
-        author = '<a alt="' + owner['display_name']+ '" href="' + owner['link'] + '">' + owner['display_name'] + '</a>'
-        post_link = post['share_link'] + '/' + owner['user_id'].to_s
-        body = HTMLEntities.new.decode post['body_markdown']
-        created = DateTime.strptime(post['creation_date'].to_s, '%s').strftime('%F %T')
-    
-        return <<MD
+    return <<MD
 ---
 layout: post
 title: #{ post['title'] }
@@ -43,13 +40,10 @@ comments: no
 Please direct comments to the [original post](#{ post_link }).
 
 MD
-      end
-    else
-      STDERR.puts response.code
   end
 end
 
-abort('Usage: ' + $0 + ' site post_id') unless ARGV.length >= 2
+abort('Usage: ' + $0 + ' url post_id') unless ARGV.length >= 2
 
 site = ARGV.shift
 ARGV.each do | id |

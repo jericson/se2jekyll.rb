@@ -1,7 +1,11 @@
 task default: %w[test]
 
-task :test do
-  # Canonical example
-  sh "ruby se2jekyll.rb stackoverflow 1732454 > xml_regex_answer.md"
-  sh "cksum xml_regex_answer.md && rm xml_regex_answer.md"
+
+require 'rake/testtask'
+
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/test*.rb']
+  t.verbose = true
 end
+
