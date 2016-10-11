@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby -w
 # encoding: UTF-8
 
-require 'HTTParty'
+require 'httparty'
 require 'json'
 require 'htmlentities'
 require 'date'
