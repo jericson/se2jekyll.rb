@@ -21,4 +21,10 @@ class TestSE2J < Minitest::Test
     #puts(md5)
     assert_equal md5, "9f63710aebd9bdbe0dfefa239d8176ff"
   end
+
+  def test_multiple_posts
+    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb superuser 267569 277793 698322`)
+    #puts(md5)
+    assert_equal md5, "58c37156647671c7dfa51dbe0fd8c3f2"
+  end    
 end
