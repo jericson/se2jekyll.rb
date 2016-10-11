@@ -1,9 +1,10 @@
 require 'minitest/autorun'
+require 'digest/md5'
 
 class TestSE2J < Minitest::Test
 
   def test_xml_regex
-    assert_equal `ruby se2jekyll.rb stackoverflow 1732454 | md5`,
-                 "52e9cadba02b9d4faab99c672855416b\n"
+    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb stackoverflow 1732454 | md5`)
+    assert_equal md5, "d52540aba8c5a3ab1c48345160fc53ae"
   end
 end
