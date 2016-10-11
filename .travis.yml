@@ -9,4 +9,4 @@ rvm:
 matrix:
   allow_failures:
     - rvm: 1.9.3
-    - ruby-head
+    - rvm: ruby-head
