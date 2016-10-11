@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -w
+#!/usr/bin/env ruby -W1
 # encoding: UTF-8
 
 require 'httparty'
