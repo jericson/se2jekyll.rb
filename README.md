@@ -90,7 +90,7 @@ Feel free to fork my code if these choices don't make sense for your purposes.
 
 [![Build Status](https://travis-ci.org/jericson/se2jekyll.rb.svg?branch=master)](https://travis-ci.org/jericson/se2jekyll.rb)
 
-* Something along the chain is screwing up Unicode. See: `se2jekyll.rb stackoverflow 1732454`
+* Something along the chain is screwing up Unicode. See: [`se2jekyll.rb stackoverflow 1732454`](http://jericson.github.io/2009/11/13/xml_regex_answer.html)
 
 ## License
 
