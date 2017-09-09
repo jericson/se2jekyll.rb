@@ -4,27 +4,26 @@ require 'digest/md5'
 class TestSE2J < Minitest::Test
 
   def test_locked_question
-    #puts(`ruby se2jekyll.rb stackoverflow 179123`)
-    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb stackoverflow 179123`)
-    #puts(md5)
-    assert_equal md5, "718aaed6741267f267d0b1a21945983f"
+    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb -s stackoverflow 179123`)
+    STDERR.puts(md5) if ENV['GEN_TEST']
+    assert_equal md5, "4f0d4c2320bd56d1bb99c508bd39a9db"
   end
   
   def test_xml_regex
-    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb stackoverflow 1732454`)
-    #puts(md5)
-    assert_equal md5, "52e9cadba02b9d4faab99c672855416b"
+    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb -s stackoverflow 1732454`)
+    STDERR.puts(md5) if ENV['GEN_TEST']
+    assert_equal md5, "2ad39dea30d7cb6aff0ce7d30f489a5d"
   end
 
   def test_hermeneutics
-    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb hermeneutics 2604`)
-    #puts(md5)
-    assert_equal md5, "9f63710aebd9bdbe0dfefa239d8176ff"
+    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb -s hermeneutics 2604`)
+    STDERR.puts(md5) if ENV['GEN_TEST']
+    assert_equal md5, "6f5cfab5d8f712e75c1b27b577993fc2"
   end
 
   def test_multiple_posts
-    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb superuser 267569 277793 698322`)
-    #puts(md5)
-    assert_equal md5, "58c37156647671c7dfa51dbe0fd8c3f2"
+    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb -s superuser 267569 277793 698322`)
+    STDERR.puts(md5) if ENV['GEN_TEST']
+    assert_equal md5, "ded93c15f7a955134dab2d18fd5bcd74"
   end    
 end
