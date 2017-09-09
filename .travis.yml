@@ -2,11 +2,10 @@ language: ruby
 cache: bundler
 
 rvm:
-  - 2.2
-  - 2.0.0-p481
+  - 2.2.7
+  - 2.3.4
+  - 2.4.1
   - ruby-head
-  - 1.9.3
 matrix:
   allow_failures:
-    - rvm: 1.9.3
     - rvm: ruby-head
