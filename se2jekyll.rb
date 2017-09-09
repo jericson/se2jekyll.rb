@@ -12,7 +12,7 @@ def get_post (uri, site)
   case response.code
     when 200
       items = JSON.parse(response.body)['items']
-  
+
       items.each do | post |
         owner = post['owner']
         author = '<a alt="' + owner['display_name']+ '" href="' + owner['link'] + '">' + owner['display_name'] + '</a>'
@@ -45,16 +45,38 @@ Please direct comments to the [original post](#{ post_link }).
 MD
       end
     else
-      STDERR.puts response.code
+      STDERR.puts uri, response.code
   end
 end
 
-abort('Usage: ' + $0 + ' site post_id') unless ARGV.length >= 2
+require 'optparse'
 
-site = ARGV.shift
+options = {
+  :site => 'stackoverflow'
+}
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: #{$0} -s NAME id ..."
+
+  opts.on("-s", "--site NAME", "Site name") do |s|
+    options[:site] = s
+  end
+
+  opts.on( '-h', '--help', 'Display this screen' ) do
+    puts opts
+    exit
+  end
+end
+
+optparse.parse!
+
+if options[:site].nil? or ARGV.length == 0
+  abort(optparse.help)
+end
+
 ARGV.each do | id |
-  # http://api.stackexchange.com/docs/posts-by-ids#filter=!*7PYFiVwh*N4PkCdfxnM3de0s50u
+  # Http://api.stackexchange.com/docs/posts-by-ids#filter=!*7PYFiVwh*N4PkCdfxnM3de0s50u
   uri = URI('http://api.stackexchange.com/2.2/posts/' + id)
-  uri.query = URI.encode_www_form({ :site => site, :filter => '!*7PYFiVwh*N4PkCdfxnM3de0s50u' })
-  puts(get_post(uri, site))
+  uri.query = URI.encode_www_form({ :site => options[:site],
+                                    :filter => '!*7PYFiVwh*N4PkCdfxnM3de0s50u' })
+  puts(get_post(uri, options[:site]))
 end
