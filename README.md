@@ -90,7 +90,11 @@ Feel free to fork my code if these choices don't make sense for your purposes.
 
 [![Build Status](https://travis-ci.org/jericson/se2jekyll.rb.svg?branch=master)](https://travis-ci.org/jericson/se2jekyll.rb)
 
-* Something along the chain is screwing up Unicode. See: [`se2jekyll.rb stackoverflow 1732454`](http://jericson.github.io/2009/11/13/xml_regex_answer.html)
+* Not really a bug of this script but rather of, um, the current
+  paradigm of font usage on the web: some pages might not render
+  properly if your site doesn't set use a font family with the needed
+  glyphs. See
+  [The Tony the Pony problem](https://jericson.github.io/2018/12/17/tony_the_pony.html). 
 
 ## License
 
