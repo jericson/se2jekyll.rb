@@ -18,7 +18,7 @@ def get_post (uri, site)
         author = '<a alt="' + owner['display_name']+ '" href="' + owner['link'] + '">' + owner['display_name'] + '</a>'
         post_link = post['share_link'] + '/' + owner['user_id'].to_s
         body = HTMLEntities.new.decode post['body_markdown']
-        created = DateTime.strptime(post['creation_date'].to_s, '%s').strftime('%F %T')
+        created = DateTime.strptime(post['creation_date'].to_s, '%s').strftime('%F')
     
         return <<MD
 ---
