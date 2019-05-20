@@ -71,6 +71,18 @@ I've tried to fill in sensible values to the front matter. A few quirks to note:
 * I use the question title as the post title, which is often a
   reasonable choice. Not everyone has the titling skill, however.
 
+* If a title includes a `#`, I encode it `&num;` since that usually
+  begins a comment in the
+  [YAML fron matter block](https://jekyllrb.com/docs/front-matter/).
+
+* I also titles with multiple colons as `&colon` for
+  [a similar reason](https://github.com/jekyll/jekyll/issues/549). **But**
+  I interpret titles with one colon as being a title and a
+  subtitle. This might not work for your blog, but it works for
+  [mine](https://github.com/jericson/jericson.github.io). I suspect
+  this should be optional behavior if anyone besides me uses this
+  script.
+
 * Currently, I only include the `meta-post` tag, which works for my
   blog's tagging system but might not for yours.
 

@@ -19,11 +19,22 @@ def get_post (uri, site)
         post_link = post['share_link'] + '/' + owner['user_id'].to_s
         body = HTMLEntities.new.decode post['body_markdown']
         created = DateTime.strptime(post['creation_date'].to_s, '%s').strftime('%F')
+        # https://stackoverflow.com/a/27091747/1438
+        title_parts = post['title'].gsub('#', '&num;').split(':')
+        case title_parts.size
+        when 1
+          title = title_parts.first
+        when 2
+          title = title_parts.first
+          subtitle = "\nsubtitle:" + title_parts.last + "\n"
+        else
+          title = title_parts.join('&colon;')
+        end
     
         return <<MD
 ---
 layout: post
-title: #{ post['title'] }
+title: #{ title }#{ subtitle if(subtitle) }
 tags: meta-post 
 license: http://creativecommons.org/licenses/by-sa/3.0/
 encoding: utf-8

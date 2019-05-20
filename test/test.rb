@@ -25,5 +25,17 @@ class TestSE2J < Minitest::Test
     md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb -s superuser 267569 277793 698322`)
     STDERR.puts(md5) if ENV['GEN_TEST']
     assert_equal md5, "85227563f4a143f57720aaeea110e077"
-  end    
+  end
+
+  def test_subtitle
+    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb -s meta 326560`)
+    STDERR.puts(md5) if ENV['GEN_TEST']
+    assert_equal md5, "fd8bba9de916b346ed6a4b27af285072"
+  end
+
+  def test_colons_in_title
+    md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb -s stackoverflow 2846230`)
+    STDERR.puts(md5) if ENV['GEN_TEST']
+    assert_equal md5, "c53af4d8010407c6c4ffd145b63b0d8a"
+  end
 end
