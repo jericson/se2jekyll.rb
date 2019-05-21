@@ -4,7 +4,12 @@ Fetch Stack Exchange posts for publishing on a Jekyll-powered blog.
 
 ## Synopsis
 
-    se2jekyll.rb site post_id
+```
+Usage: ./se2jekyll.rb -s SITE post_id ...
+    -s, --site SITE                  Site name
+    -t, --tags TAG(S)                Space-delimited lowercase tags
+    -h, --help                       Display this screen
+```
 
 Example (http://meta.puzzling.stackexchange.com/a/3020):
 
@@ -47,6 +52,17 @@ folder for revision before publishing.
   or
   [via the API](https://api.stackexchange.com/docs/me-posts#pagesize=100&order=desc&sort=creation&filter=!-.5dQYOim_ef&site=stackoverflow&run=true).
 
+* `tags`
+
+  If you want to
+  [customize tags](https://github.com/pattex/jekyll-tagging), this is
+  the option for you. Pass it any number of space-delimted strings
+  like this:
+
+   ```
+   se2jekyll.rb -s stackoverflow 55885729 -t "libcurl curl locked" 
+   ```
+
 ## Output
 
 If all goes well, a converted version of the post will be sent to
@@ -83,8 +99,8 @@ I've tried to fill in sensible values to the front matter. A few quirks to note:
   this should be optional behavior if anyone besides me uses this
   script.
 
-* Currently, I only include the `meta-post` tag, which works for my
-  blog's tagging system but might not for yours.
+* Currently, the default tag is`meta-post` tag, which works for my
+  blog's tagging system but might not for yours. 
 
 * The date is set to the creation date of the post on Stack Exchange, not the current date.
 

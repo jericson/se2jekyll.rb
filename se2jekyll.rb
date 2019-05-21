@@ -6,7 +6,7 @@ require 'json'
 require 'htmlentities'
 require 'date'
 
-def get_post (uri, site)
+def get_post (uri, options)
 
   response = HTTParty.get(uri)
   case response.code
@@ -26,7 +26,7 @@ def get_post (uri, site)
           title = title_parts.first
         when 2
           title = title_parts.first
-          subtitle = "\nsubtitle:" + title_parts.last + "\n"
+          subtitle = "\nsubtitle:" + title_parts.last
         else
           title = title_parts.join('&colon;')
         end
@@ -35,7 +35,7 @@ def get_post (uri, site)
 ---
 layout: post
 title: #{ title }#{ subtitle if(subtitle) }
-tags: meta-post 
+tags: #{ options[:tags] }
 license: http://creativecommons.org/licenses/by-sa/3.0/
 encoding: utf-8
 author: #{ author }
@@ -43,7 +43,7 @@ date: #{ created }
 comments: no
 ---
 
-([Originally published](#{ post_link }) on #{ site } Stack Exchange by #{ author }.)
+([Originally published](#{ post_link }) on #{ options[:site] } Stack Exchange by #{ author }.)
 
 ---
 
@@ -63,13 +63,19 @@ end
 require 'optparse'
 
 options = {
-  :site => 'stackoverflow'
+  :site => 'stackoverflow',
+  :tags => 'meta-post'
 }
-optparse = OptionParser.new do |opts|
-  opts.banner = "Usage: #{$0} -s NAME id ..."
 
-  opts.on("-s", "--site NAME", "Site name") do |s|
+optparse = OptionParser.new do |opts|
+  opts.banner = "Usage: #{$0} -s SITE post_id ..."
+
+  opts.on("-s", "--site SITE", "Site name") do |s|
     options[:site] = s
+  end
+
+  opts.on("-t", "--tags TAG(S)", "Space-delimited lowercase tags") do |s|
+    options[:tags] = s
   end
 
   opts.on( '-h', '--help', 'Display this screen' ) do
@@ -89,5 +95,5 @@ ARGV.each do | id |
   uri = URI('http://api.stackexchange.com/2.2/posts/' + id)
   uri.query = URI.encode_www_form({ :site => options[:site],
                                     :filter => '!*7PYFiVwh*N4PkCdfxnM3de0s50u' })
-  puts(get_post(uri, options[:site]))
+  puts(get_post(uri, options))
 end
