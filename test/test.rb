@@ -18,7 +18,7 @@ class TestSE2J < Minitest::Test
   def test_hermeneutics
     md5 = Digest::MD5.hexdigest(`ruby se2jekyll.rb -s hermeneutics 2604`)
     STDERR.puts(md5) if ENV['GEN_TEST']
-    assert_equal md5, "2950b19a473fa50b3645c842a779b3f1"
+    assert_equal md5, "a74605fe7d5c67150ef2cb4be86ee650"
   end
 
   def test_multiple_posts
