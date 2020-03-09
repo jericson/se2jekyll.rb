@@ -56,7 +56,7 @@ folder for revision before publishing.
 
   If you want to
   [customize tags](https://github.com/pattex/jekyll-tagging), this is
-  the option for you. Pass it any number of space-delimted strings
+  the option for you. Pass it any number of space-delimited strings
   like this:
 
    ```
